@@ -2,29 +2,29 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 const ActiveCity = (props) => {
-  let selectedCity;
+  let activeCity;
 
-  if (props.selectedCity) {
-    selectedCity = (
+  if (props.activeCity) {
+    activeCity = (
       <div>
-        <h3>{props.selectedCity.name}</h3>
-        <p>{props.selectedCity.address}</p>
-        <img src={`https://kitt.lewagon.com/placeholder/cities/${props.selectedCity.slug}`} alt="" />
+        <h3>{props.activeCity.name}</h3>
+        <p>{props.activeCity.address}</p>
+        <img src={`https://kitt.lewagon.com/placeholder/cities/${props.activeCity.slug}`} alt="" />
       </div>
     );
   }
 
   return (
     <div className="active-city">
-      {selectedCity}
+      {activeCity}
     </div>
   );
 };
 
 function mapStateToProps(reduxState) {
   return {
-    selectedCity: reduxState.selectedCity
+    activeCity: reduxState.activeCity
   };
 }
 
-export default connect(mapStateToProps, null)(ActiveCity);
+export default connect(mapStateToProps)(ActiveCity);

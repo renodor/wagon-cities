@@ -1,31 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { setCities } from '../actions';
 
 import City from './city';
 
 
 // eslint-disable-next-line react/prefer-stateless-function
 class CityList extends Component {
-  componentWillMount() {
-    this.props.setCities();
+  renderList() {
+    return this.props.cities.map(city => <City key={city.name} city={city} />);
   }
 
   render() {
     return (
       <div className="cities">
-        { this.props.cities.map(city => <City city={city} key={city.name} />)}
+        {this.renderList()}
       </div>
     );
   }
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(
-    { setCities: setCities },
-    dispatch
-  );
 }
 
 function mapStateToProps(reduxState) {
@@ -34,5 +25,5 @@ function mapStateToProps(reduxState) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CityList);
+export default connect(mapStateToProps)(CityList);
 

@@ -2,24 +2,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, combineReducers } from 'redux';
+import { createStore } from 'redux';
+import rootReducer from './reducers';
 
-import '../assets/stylesheets/application.scss';
-
-// internal modules
 import App from './components/app';
-import citiesReducer from './reducers/cities_reducer';
-import selectedCityReducer from './reducers/selected_city_reducer';
-
-// State and reducers
-const reducers = combineReducers({
-  cities: citiesReducer,
-  selectedCity: selectedCityReducer
-});
+import '../assets/stylesheets/application.scss';
 
 // render an instance of the component in the DOM
 ReactDOM.render(
-  <Provider store={createStore(reducers)}>
+  <Provider store={createStore(rootReducer)}>
     <App />
   </Provider>,
   document.getElementById('root')

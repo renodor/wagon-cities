@@ -1,17 +1,8 @@
 // TODO: add and export your own actions
 
-import cities from '../cities';
-
-export function setCities() {
+export default function selectCity(city) {
   return {
-    type: 'SET_CITIES',
-    payload: cities
-  };
-}
-
-export function selectCity(city) {
-  return {
-    type: 'SELECT_CITY',
+    type: 'CITY_SELECTED',
     payload: city
   };
 }
